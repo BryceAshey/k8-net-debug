@@ -2,23 +2,23 @@ apiVersion: apps/v1beta1
 kind: Deployment
 metadata:
   labels:
-    run: netbox
-  name: netbox
+    run: k8-net-debug
+  name: k8-net-debug
   namespace: default
 spec:
   replicas: 1
   selector:
     matchLabels:
-      run: netbox
+      run: k8-net-debug
   template:
     metadata:
       labels:
-        run: netbox
+        run: k8-net-debug
     spec:
       containers:
-      - image: bryceashey/netbox:latest
+      - image: bryceashey/k8-net-debug:latest
         imagePullPolicy: Always
-        name: netbox
+        name: k8-net-debug
       securityContext:
         runAsUser: 0
       terminationGracePeriodSeconds: 30
