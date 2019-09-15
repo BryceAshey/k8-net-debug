@@ -1,0 +1,24 @@
+apiVersion: apps/v1beta1
+kind: Deployment
+metadata:
+  labels:
+    run: netbox
+  name: netbox
+  namespace: default
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      run: netbox
+  template:
+    metadata:
+      labels:
+        run: netbox
+    spec:
+      containers:
+      - image: bryceashey/netbox:latest
+        imagePullPolicy: Always
+        name: netbox
+      securityContext:
+        runAsUser: 0
+      terminationGracePeriodSeconds: 30
